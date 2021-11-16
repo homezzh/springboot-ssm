@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.springboot.ssm.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.oracle.springboot.ssm.po.Menu">
+    <!--@mbg.generated-->
+    <!--@Table menu-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_logo" jdbcType="VARCHAR" property="menuLogo" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="menu_key" jdbcType="VARCHAR" property="menuKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, parent_id, menu_name, menu_logo, menu_url, `status`, create_time, menu_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.oracle.springboot.ssm.po.Menu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into menu (parent_id, menu_name, menu_logo, 
+      menu_url, `status`, create_time, 
+      menu_key)
+    values (#{parentId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuLogo,jdbcType=VARCHAR}, 
+      #{menuUrl,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{menuKey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.oracle.springboot.ssm.po.Menu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="menuName != null and menuName != ''">
+        menu_name,
+      </if>
+      <if test="menuLogo != null and menuLogo != ''">
+        menu_logo,
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        menu_url,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="menuKey != null and menuKey != ''">
+        menu_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null and menuName != ''">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLogo != null and menuLogo != ''">
+        #{menuLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuKey != null and menuKey != ''">
+        #{menuKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oracle.springboot.ssm.po.Menu">
+    <!--@mbg.generated-->
+    update menu
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null and menuName != ''">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLogo != null and menuLogo != ''">
+        menu_logo = #{menuLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        menu_url = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="menuKey != null and menuKey != ''">
+        menu_key = #{menuKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oracle.springboot.ssm.po.Menu">
+    <!--@mbg.generated-->
+    update menu
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_logo = #{menuLogo,jdbcType=VARCHAR},
+      menu_url = #{menuUrl,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      menu_key = #{menuKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

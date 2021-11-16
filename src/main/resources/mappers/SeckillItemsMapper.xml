@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.springboot.ssm.mapper.SeckillItemsMapper">
+  <resultMap id="BaseResultMap" type="com.oracle.springboot.ssm.po.SeckillItems">
+    <!--@mbg.generated-->
+    <!--@Table seckill_items-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="items_name" jdbcType="VARCHAR" property="itemsName" />
+    <result column="seckill_price" jdbcType="DECIMAL" property="seckillPrice" />
+    <result column="seckill_count" jdbcType="INTEGER" property="seckillCount" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="seckill_seq_id" jdbcType="INTEGER" property="seckillSeqId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, items_name, seckill_price, seckill_count, img_url, seckill_seq_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from seckill_items
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from seckill_items
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oracle.springboot.ssm.po.SeckillItems">
+    <!--@mbg.generated-->
+    insert into seckill_items (id, items_name, seckill_price, 
+      seckill_count, img_url, seckill_seq_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{itemsName,jdbcType=VARCHAR}, #{seckillPrice,jdbcType=DECIMAL}, 
+      #{seckillCount,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, #{seckillSeqId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oracle.springboot.ssm.po.SeckillItems">
+    <!--@mbg.generated-->
+    insert into seckill_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemsName != null and itemsName != ''">
+        items_name,
+      </if>
+      <if test="seckillPrice != null">
+        seckill_price,
+      </if>
+      <if test="seckillCount != null">
+        seckill_count,
+      </if>
+      <if test="imgUrl != null and imgUrl != ''">
+        img_url,
+      </if>
+      <if test="seckillSeqId != null">
+        seckill_seq_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemsName != null and itemsName != ''">
+        #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="seckillPrice != null">
+        #{seckillPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillCount != null">
+        #{seckillCount,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null and imgUrl != ''">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="seckillSeqId != null">
+        #{seckillSeqId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oracle.springboot.ssm.po.SeckillItems">
+    <!--@mbg.generated-->
+    update seckill_items
+    <set>
+      <if test="itemsName != null and itemsName != ''">
+        items_name = #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="seckillPrice != null">
+        seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillCount != null">
+        seckill_count = #{seckillCount,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null and imgUrl != ''">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="seckillSeqId != null">
+        seckill_seq_id = #{seckillSeqId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oracle.springboot.ssm.po.SeckillItems">
+    <!--@mbg.generated-->
+    update seckill_items
+    set items_name = #{itemsName,jdbcType=VARCHAR},
+      seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+      seckill_count = #{seckillCount,jdbcType=INTEGER},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      seckill_seq_id = #{seckillSeqId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
